@@ -76,10 +76,10 @@ export class Profile {
      * @param cb - Optional callback to get result of settings, promise returned otherwise
      * @return
      */
-  public setPersistentMenu(menuEntries:any[], cb?: Function) {
+  public setPersistentMenu(menuEntries:any[], disableInput: boolean = false, cb?: Function) {
     const urlCrumb = 'me/messenger_profile';
     const payload: PersistentMenuSettings = {setting_type: 'call_to_actions', thread_state: 'existing_thread',
-      persistent_menu:[{ locale:'default', call_to_actions: menuEntries }]};
+      persistent_menu:[{ locale:'default', composer_input_disabled: disableInput, call_to_actions: menuEntries }]};
     return this.sendConfigurationMessage(payload, urlCrumb, cb);
   }
 
